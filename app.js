@@ -4,35 +4,24 @@ var dateNow = now.getDate();
 var monthNow = now.getMonth() + 1;
 var yearNow = now.getFullYear();
 
-var endPoint = 'https://launchlibrary.net/1.2/launch/' + yearNow + '-0' + monthNow + '-' + dateNow;
+function editDateFormat(time){
+
+	if (time <10){
+		time = '0' + time;
+	}
+	return time;
+}
+
+
+var endPoint = 'https://launchlibrary.net/1.2/launch/' + yearNow + '-' + editDateFormat(monthNow) + '-' + editDateFormat(dateNow);
 
 var state = {
-	display: true
+	display: true,
+	launchData: []
 }
 
 function changeClass(){
 	state.display = false;
-}
-
-function getLaunchData(searchTerm, callback){
-	$.ajax({
-		url: endPoint,
-		type: 'GET',
-		// data: {
-		// 	"name": "",
-		// 	"windowstart": "",
-		// 	"windowend": "",
-		// 	"vidURLs": [],
-		// 	"location": "",
-		// 	"missions": [{
-		// 		"description": ""
-		// 	}]
-		// },
-		dataType: 'json',
-		success: function(data){
-			console.log('data' + data);
-		}
-	});
 }
 
 function render(){
@@ -43,18 +32,8 @@ function render(){
 
 function listenerWatcher(){
 	$('#images').on('click', 'div', function(event){
-		console.log(event.target, event.currentTarget);
 		changeClass();
 		render();
-		getLaunchData();
-
-		// getLaunchData will need to be async
-		// and take a callback. (You will use
-		// jQuery $.get or $.ajax methods).
-		//
-		// It will put data into the state.
-		// Then render.
-		//
 	});
 }
 
