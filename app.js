@@ -24,16 +24,34 @@ function changeClass(){
 	state.display = false;
 }
 
+function getData(){
+	$.ajax({
+		url: endPoint,
+		type: 'GET',
+		success: function(result){
+			addDataToState(state, result);
+// 			displayData(state);
+		}
+	})
+}
+
+function addDataToState(state, result){
+	state.launchData.push(result);
+}
+
 function render(){
 	if (state.display === false) {
 		$('#images, #buttons').css("display", "none");
 	} 
+
 }
 
 function listenerWatcher(){
 	$('#images').on('click', 'div', function(event){
 		changeClass();
 		render();
+		getData();
+		
 	});
 }
 
