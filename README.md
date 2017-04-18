@@ -24,5 +24,5 @@ Mobile view initial page:
 
 <img src="https://github.com/YuliaBlyndiuk/RocketLaunchFinder/blob/master/mobile%20view.jpg">
 
-All the database information is being stored in the app state (JS), so that the DOM is not overloaded and thea pp works faster.
+All the database information is being stored in the app state (JS), so that the DOM is not overloaded and the app works faster.
 
