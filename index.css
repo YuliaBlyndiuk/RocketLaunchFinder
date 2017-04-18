@@ -74,7 +74,7 @@
 
 	.rocketImageBox {
 		display: flex;
-		height: 150px;
+		height: 70vh;
 		width: 100px;
 		margin-bottom: 5px;
 		margin-right: 10px;
@@ -89,17 +89,12 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
-.rocketImageBox {
-	display: flex;
+#resultImg {
 	height: 150px;
-	width: 100px;
-	margin-bottom: 5px;
-	margin-right: 10px;
+	width: 30%;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
 	float: left;
-}
-
-.rocketImage {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
+	margin-right: 10px;
 }
