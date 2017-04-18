@@ -6,7 +6,7 @@ var yearNow = now.getFullYear();
 
 // 6) ensure single digit dates have '0' added to them
 function editDateFormat(time){
-	
+
 	if (time <10){
 		time = '0' + time;
 	}
@@ -60,7 +60,7 @@ function displayData16(state){
 
 	var Schedule16 = "";
 
-	// var header1 = '<h1 class='header1'>Schedule Of Rocket Launches at Kennedy Space Center</h1>';
+	var header1 = '<h1 class="header">Schedule Of Rocket Launches at Kennedy Space Center</h1>';
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
 
@@ -74,9 +74,9 @@ function displayData16(state){
 		var windowEnd = state.launchData[0].launches[i].windowend;
 
 			state.launchData.forEach(function(item){
-			Schedule16 += '<div class="scheduleBlock"><div class="rocketImageBox"><img class="rocketImage" src="' + rocketImg + '"></div><b>Rocket name:</b> ' + rocketName + '<br><b>Mission Name:</b> '+ missionName + '<br><b>Mission Description:</b> ' + missionDescription + '<br><b>Opening of Launch Window:</b> ' + windowStart + '<br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
+			Schedule16 += '<div class="scheduleBlock"><div id="resultImg" style="background-image: url(' + rocketImg + ')"></div><b>Rocket name:</b> ' + rocketName + '<br><br><b>Mission Name:</b> '+ missionName + '<br><br><b>Mission Description:</b> ' + missionDescription + '<br><br><b>Opening of Launch Window:</b> ' + windowStart + '<br><br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
 
-			$("#app").append(Schedule16);
+			$("#app").html([ header1, Schedule16 ]);
 			})
 		}	
 	}
@@ -86,7 +86,7 @@ function displayData17(state){
 
 	var Schedule17 = "";
 
-	// var header2 = '<h1 class='header1'>Schedule Of Rocket Launches at Cape Canaveral Air Force Station</h1>';
+	var header2 = '<h1 class="header">Schedule Of Rocket Launches at Cape Canaveral Air Force Station</h1>';
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
 
@@ -100,9 +100,9 @@ function displayData17(state){
 		var windowEnd = state.launchData[0].launches[i].windowend;
 
 			state.launchData.forEach(function(item){
-			Schedule17 += '<div class="scheduleBlock"><div class="rocketImageBox"><img class="rocketImage" src="' + rocketImg + '"></div><b>Rocket name:</b> ' + rocketName + '<br><b>Mission Name:</b> '+ missionName + '<br><b>Mission Description:</b> ' + missionDescription + '<br><b>Opening of Launch Window:</b> ' + windowStart + '<br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
+			Schedule17 += '<div class="scheduleBlock"><div id="resultImg" style="background-image: url(' + rocketImg + ')"></div><b>Rocket name:</b> ' + rocketName + '<br><br><b>Mission Name:</b> '+ missionName + '<br><br><b>Mission Description:</b> ' + missionDescription + '<br><br><b>Opening of Launch Window:</b> ' + windowStart + '<br><br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
 
-			$("#app").append(Schedule17);
+			$("#app").html([ header2, Schedule17 ]);
 			})
 		}	
 	}
