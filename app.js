@@ -6,6 +6,7 @@ var yearNow = now.getFullYear();
 
 // 6) ensure single digit dates have '0' added to them
 function editDateFormat(time){
+	
 	if (time <10){
 		time = '0' + time;
 	}
@@ -52,16 +53,17 @@ function getData2(){
 // 9) adding received data to the state
 function addDataToState(state, result){
 	state.launchData.push(result);
-	console.log('state is', state);
 }
 
 //changing the state to get necessary information out of it
 function displayData16(state){
+
 	var Schedule16 = "";
 
 	// var header1 = '<h1 class='header1'>Schedule Of Rocket Launches at Kennedy Space Center</h1>';
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
+
 		if (state.launchData[0].launches[i].location.id === 16) {
 
 		var rocketImg = state.launchData[0].launches[i].rocket.imageURL;
@@ -81,11 +83,13 @@ function displayData16(state){
 }
 
 function displayData17(state){
+
 	var Schedule17 = "";
 
 	// var header2 = '<h1 class='header1'>Schedule Of Rocket Launches at Cape Canaveral Air Force Station</h1>';
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
+
 		if (state.launchData[0].launches[i].location.id === 17) {
 
 		var rocketImg = state.launchData[0].launches[i].rocket.imageURL;
@@ -106,6 +110,7 @@ function displayData17(state){
 
 // 4) re-render
 function render(){
+
 	if (state.display === false) {
 		$('#images, #buttons').css("display", "none");
 	} 
@@ -113,6 +118,7 @@ function render(){
 }
 
 function listenerWatcher(){
+
 	$('#img1').on('click', function(event){
 		changeClass();
 		render();
@@ -131,6 +137,7 @@ function listenerWatcher(){
 
 // 1) once the page is loaded..
 $(function(){
+
 	listenerWatcher();
 });
 
