@@ -11,7 +11,7 @@ A user opens the web app and selects one of two launch sites. Each of the sites 
 Once an image has been clicked, an AJAX request is being sent out to a Rocket Launch Library and a JSON file is being added to the state.
 The correct schedule is being displayed based on which button has been clicked:
 
-<img src="https://github.com/YuliaBlyndiuk/RocketLaunchFinder/blob/master/result%20page.png">
+<img src="https://github.com/YuliaBlyndiuk/RocketLaunchFinder/blob/master/result%20page.jpg">
 
 <b>Technologies used:</b><br>
 - HTML
@@ -19,6 +19,10 @@ The correct schedule is being displayed based on which button has been clicked:
 - JavaScript
 - jQuery
 
-The web app has been built according to the 'mobile first' principle.
+The web app has been built according to the 'mobile first' principle. 
+Mobile view initial page:
+
+<img src="https://github.com/YuliaBlyndiuk/RocketLaunchFinder/blob/master/mobile%20view.jpg">
+
 All the database information is being stored in the app state (JS), so that the DOM is not overloaded and thea pp works faster.
 
