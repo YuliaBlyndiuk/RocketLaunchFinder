@@ -1,10 +1,10 @@
-// 5) getting the the date of the request date:
+
 var now = new Date();
 var dateNow = now.getDate();
 var monthNow = now.getMonth() + 1;
 var yearNow = now.getFullYear();
 
-// 6) ensure single digit dates have '0' added to them
+
 function editDateFormat(time){
 
 	if (time <10){
@@ -13,21 +13,14 @@ function editDateFormat(time){
 	return time;
 }
 
-// 7) create a link that reflects the request's date
+
 var endPoint = 'https://launchlibrary.net/1.2/launch/' + yearNow + '-' + editDateFormat(monthNow) + '-' + editDateFormat(dateNow);
 
-//state to store data
+
 var state = {
-	display: true,
 	launchData: []
 }
 
-// 3) make images disappear after being clicked on
-function changeClass(){
-	state.display = false;
-}
-
-// 8) getting data from the server and displaying it
 function getData1(){
 	$.ajax({
 		url: endPoint,
@@ -35,7 +28,7 @@ function getData1(){
 		success: function(result){
 			addDataToState(state, result);
 			displayData17(state);
-		}
+		},
 	})
 }
 
@@ -50,17 +43,18 @@ function getData2(){
 	})
 }
 
-// 9) adding received data to the state
+
 function addDataToState(state, result){
 	state.launchData.push(result);
+	console.log('state is ', state);
 }
 
-//changing the state to get necessary information out of it
+
 function displayData16(state){
 
-	var Schedule16 = "";
-
 	var header1 = '<h1 class="header">Schedule Of Rocket Launches at Kennedy Space Center</h1>';
+	var returnButton = '<button class="returnB">Return To The Main Page</button>';
+	var Schedule16 = "";
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
 
@@ -76,7 +70,7 @@ function displayData16(state){
 			state.launchData.forEach(function(item){
 			Schedule16 += '<div class="scheduleBlock"><div id="resultImg" style="background-image: url(' + rocketImg + ')"></div><b>Rocket name:</b> ' + rocketName + '<br><br><b>Mission Name:</b> '+ missionName + '<br><br><b>Mission Description:</b> ' + missionDescription + '<br><br><b>Opening of Launch Window:</b> ' + windowStart + '<br><br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
 
-			$("#app").html([ header1, Schedule16 ]);
+			$("#app").html([ header1, Schedule16, returnButton ]);
 			})
 		}	
 	}
@@ -84,9 +78,9 @@ function displayData16(state){
 
 function displayData17(state){
 
-	var Schedule17 = "";
-
 	var header2 = '<h1 class="header">Schedule Of Rocket Launches at Cape Canaveral Air Force Station</h1>';
+	var Schedule17 = "";
+	var returnButton = '<button class="returnB">Return To The Main Page</button>';
 
 	for (var i = 0; i < state.launchData[0].launches.length; i++) {
 
@@ -102,40 +96,36 @@ function displayData17(state){
 			state.launchData.forEach(function(item){
 			Schedule17 += '<div class="scheduleBlock"><div id="resultImg" style="background-image: url(' + rocketImg + ')"></div><b>Rocket name:</b> ' + rocketName + '<br><br><b>Mission Name:</b> '+ missionName + '<br><br><b>Mission Description:</b> ' + missionDescription + '<br><br><b>Opening of Launch Window:</b> ' + windowStart + '<br><br><b>Closing of Launch Window:</b> ' + windowEnd + '</div>';
 
-			$("#app").html([ header2, Schedule17 ]);
+			$("#app").html([ header2, Schedule17, returnButton ]);
 			})
 		}	
 	}
 }
 
-// 4) re-render
 function render(){
-
-	if (state.display === false) {
-		$('#images, #buttons').css("display", "none");
-	} 
-
+	$('#app').html('<h1 class="header">Schedule Of Rocket Launches In Florida</h1><div id="images"><div id="img1"><button id="kennedyButton">See Schedule For Kennedy Space Center</button></div><div id="img2"><button id="cocoaButton">See Schedule For Cape Canaveral Air Force Station</button></div>');
 }
 
 function listenerWatcher(){
 
-	$('#img1').on('click', function(event){
-		changeClass();
-		render();
+	$('#app').on('click', '#img1', function(event){
 		getData1();
 
 	})
 
-	$('#img2').on('click', function(event){
-		changeClass();
-		render();
+	$('#app').on('click', '#img2',function(event){
 		getData2();
 
 	})
 
+	// For elements that aren't present on page load.
+	$('#app').on('click', '.returnB', function(event){
+		console.log('I have been clicked');
+		render();
+	})
+
 }
 
-// 1) once the page is loaded..
 $(function(){
 
 	listenerWatcher();
