@@ -46,7 +46,7 @@ function getData2(){
 
 function addDataToState(state, result){
 	state.launchData.push(result);
-	console.log('state is ', state);
+	//console.log('state is ', state);
 }
 
 
@@ -104,6 +104,7 @@ function displayData17(state){
 
 function render(){
 	$('#app').html('<h1 class="header">Schedule Of Rocket Launches In Florida</h1><div id="images"><div id="img1"><button id="kennedyButton">See Schedule For Kennedy Space Center</button></div><div id="img2"><button id="cocoaButton">See Schedule For Cape Canaveral Air Force Station</button></div>');
+	state.launchData.length = 0;
 }
 
 function listenerWatcher(){
@@ -120,7 +121,7 @@ function listenerWatcher(){
 
 	// For elements that aren't present on page load.
 	$('#app').on('click', '.returnB', function(event){
-		console.log('I have been clicked');
+		//console.log('I have been clicked');
 		render();
 	})
 
